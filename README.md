@@ -1,8 +1,8 @@
 # Random_generator
 A program that generates random information. It has a class Generator that contains different methods to get data using a Faker gem and a postcode API.
 
-<!-- ## Installing the Repository
-To access this repository, clone using HTTPS by copying the HTTPS link and running 'git clone <i>insert https link here' -->
+## Installing the Repository
+To access this repository, clone using HTTPS by copying the HTTPS link and running 'git clone <i>insert https link here</i>'
 
 ## Creating Methods
 There are methods within the Generator class that have been created using;
