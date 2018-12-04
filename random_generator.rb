@@ -35,17 +35,13 @@ class Generator
     Faker::Nation.unique.nationality
   end
 
-  def get_user_birthday
-    Faker::Date.birthday
-  end
-
   def get_user_age
-    Date.today.year - get_user_birthday.year
+    Date.today.year - Faker::Date.birthday.year
   end
 
   def get_user_phone_number
     Faker::Config.locale = 'en-GB'
-    Faker::PhoneNumber.cell_phone
+    Faker::PhoneNumber.cell_phone.gsub(' ','')
   end
 
   def get_university_name
