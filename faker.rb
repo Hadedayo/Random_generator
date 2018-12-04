@@ -1,43 +1,76 @@
 require 'faker'
+require 'httparty'
+require 'json'
 
 class Generator
+  include HTTParty
 
-  attr_accessor :first_name
+  base_uri 'api.postcodes.io'
 
-  def initialize
-    @first_name = Faker::Name.unique.name
+  def get_random_postcode
+    JSON.parse(self.class.get("/random/postcodes/").body)['result']['postcode']
   end
 
-  def gender
+  def name
+    Faker::Name.unique.name
+  end
+
+  def get_gender
     Faker::Gender.unique.binary_type
   end
 
-  def address
+  def get_address
     Faker::Address.unique.street_address
   end
 
-  def zip_code
+  def get_zip_code
     Faker::Address.unique.zip_code
   end
 
-  def job
-    Faker::Job.title
+  def get_job_title
+    Faker::Job.unique.title
   end
 
-  def nationality
-
+  def get_user_nationality
+    Faker::Nation.unique.nationality
   end
 
-  def age
-
+  def get_user_birthday
+    Faker::Date.birthday
   end
 
+  def get_user_age
+    Date.today.year - get_user_birthday.year
+  end
 
+  def get_user_phone_number
+    Faker::Config.locale = 'en-GB'
+    Faker::PhoneNumber.cell_phone
+  end
 
+  def get_university_name
+    Faker::University.name
+  end
+
+  def get_user_programming_language
+    Faker::ProgrammingLanguage.name
+  end
+
+  def get_company_name
+    Faker::Company.name
+  end
+
+  def get_company_industry
+    Faker::Company.industry
+  end
+
+  def get_marital_status
+    Faker::Demographic.marital_status
+  end
 
 end
 
-my_name = Generator.new
-puts my_name.first_name
-puts my_name.gender
-puts my_name.address
+testing = Generator.new
+puts testing.get_marital_status
+puts testing.get_random_postcode
+puts testing.get_user_phone_number
