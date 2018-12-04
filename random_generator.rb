@@ -7,28 +7,32 @@ class Generator
 
   base_uri 'api.postcodes.io'
 
-  def get_random_postcode
+    def get_random_postcode
     JSON.parse(self.class.get("/random/postcodes/").body)['result']['postcode']
   end
 
   def name
-    Faker::Name.unique.name
+    Faker::Name.name
+  end
+
+  def capitalize_name
+    name.start_with? /[A-Z]/
   end
 
   def get_gender
-    Faker::Gender.unique.binary_type
+    Faker::Gender.binary_type
   end
 
   def get_address
-    Faker::Address.unique.street_address
+    Faker::Address.street_address
   end
 
   def get_zip_code
-    Faker::Address.unique.zip_code
+    Faker::Address.zip_code
   end
 
   def get_job_title
-    Faker::Job.unique.title
+    Faker::Job.title
   end
 
   def get_user_nationality

@@ -4,9 +4,12 @@ describe "Testing the Random Generator class" do
     @generator_data = Generator.new
   end
 
-
   it "should return a string as the name" do
     expect(@generator_data.name).to be_kind_of String
+  end
+
+  it "should have name starting with a capital letter" do
+    expect(@generator_data.capitalize_name).to be true
   end
 
   it "should return a string as the gender" do
@@ -25,8 +28,8 @@ describe "Testing the Random Generator class" do
     expect(@generator_data.get_zip_code).to be_kind_of String
   end
 
-  it "should have the length of zip code as 5 " do
-    expect(@generator_data.get_zip_code.length).to eq 5
+  it "should have the length of zip code between 5 and 10 " do
+    expect(@generator_data.get_zip_code.length).to be_between(5,10).inclusive
   end
 
   it "should return a string as the job title" do
@@ -72,8 +75,5 @@ describe "Testing the Random Generator class" do
   it "should return a string as the user's marital status" do
     expect(@generator_data.get_marital_status).to be_kind_of String
   end
-
-
-
 
 end
