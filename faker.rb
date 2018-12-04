@@ -69,8 +69,3 @@ class Generator
   end
 
 end
-
-testing = Generator.new
-puts testing.get_marital_status
-puts testing.get_random_postcode
-puts testing.get_user_phone_number
